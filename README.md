@@ -51,3 +51,7 @@ http://localhost:3000
 - `public/index.html`: game shell and HUD layout.
 - `public/style.css`: UI styling and responsive layout.
 - `public/game.js`: networking, controls, raycasting renderer, and animations.
+
+## Play Online
+
+- https://3d-online-multiplayer-maze-shooter-game.onrender.com/
