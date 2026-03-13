@@ -1,0 +1,13 @@
+{
+  "name": "maze-arena-3d",
+  "version": "1.0.0",
+  "description": "Multiplayer 3D maze arena with raycasting, PvE combat, and victory door mechanics.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "ws": "^8.18.0"
+  }
+}

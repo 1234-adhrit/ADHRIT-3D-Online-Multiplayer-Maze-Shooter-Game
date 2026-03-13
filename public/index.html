@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maze Arena 3D</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500;700&family=Rajdhani:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="viewport"></canvas>
+      <div id="atmosphere"></div>
+
+      <section id="menuPanel">
+        <h1>Maze Arena 3D</h1>
+        <p class="subtitle">Raycast combat. Co-op survival. One final escape door.</p>
+
+        <label for="playerName">Player Name</label>
+        <input id="playerName" maxlength="18" value="Runner" />
+
+        <button id="createBtn" type="button">Create Server</button>
+
+        <label for="roomCodeInput">Join With Code</label>
+        <div class="joinRow">
+          <input id="roomCodeInput" maxlength="5" placeholder="ABCDE" />
+          <button id="joinBtn" type="button">Join Server</button>
+        </div>
+
+        <p id="statusLine">Create a room or join an existing one.</p>
+
+        <div class="tips">
+          <p>`WASD` move, mouse or arrow keys look, left click fire.</p>
+          <p>Clear maze entities to open the final door.</p>
+        </div>
+      </section>
+
+      <section id="hudPanel">
+        <div class="metric">
+          <span class="label">Health</span>
+          <div class="healthTrack"><div id="healthFill"></div></div>
+          <span id="healthValue">100 HP</span>
+        </div>
+        <div class="metric mini">
+          <span class="label">Room</span>
+          <span id="roomValue">----</span>
+        </div>
+        <div class="metric mini">
+          <span class="label">Entities</span>
+          <span id="enemiesValue">0</span>
+        </div>
+        <div class="metric mini">
+          <span class="label">Door</span>
+          <span id="doorValue">0%</span>
+        </div>
+      </section>
+
+      <section id="scorePanel">
+        <h2>Squad Board</h2>
+        <ul id="scoreList"></ul>
+      </section>
+
+      <section id="victoryOverlay">
+        <div class="victoryCard">
+          <h3 id="victoryTitle">Escape Complete</h3>
+          <p id="victoryText"></p>
+        </div>
+      </section>
+    </div>
+
+    <script src="./game.js"></script>
+  </body>
+</html>

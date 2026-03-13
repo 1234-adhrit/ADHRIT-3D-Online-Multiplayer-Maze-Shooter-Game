@@ -1,0 +1,347 @@
+:root {
+  --ink: #e4f2f7;
+  --ink-muted: #8fa9b4;
+  --panel: rgba(8, 22, 30, 0.7);
+  --panel-strong: rgba(8, 22, 30, 0.92);
+  --accent: #ffb14d;
+  --accent-strong: #ff7a37;
+  --teal: #6ef0e0;
+  --danger: #ff5f5f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: "Rajdhani", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at 15% 20%, #143649, #041019 66%);
+}
+
+#app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#viewport {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #03080d;
+}
+
+#atmosphere {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 75% 8%, rgba(91, 230, 219, 0.18), transparent 40%),
+    radial-gradient(circle at 15% 80%, rgba(255, 122, 55, 0.12), transparent 50%);
+  mix-blend-mode: screen;
+}
+
+#menuPanel {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: min(22rem, calc(100vw - 2rem));
+  z-index: 10;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 1rem;
+  background: var(--panel);
+  backdrop-filter: blur(10px);
+}
+
+#menuPanel h1 {
+  margin: 0;
+  font-family: "Oxanium", sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  margin: 0.45rem 0 1rem;
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+}
+
+#menuPanel label {
+  display: block;
+  margin: 0.65rem 0 0.35rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+}
+
+#menuPanel input,
+#menuPanel button {
+  width: 100%;
+  min-height: 2.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.7rem;
+  font: inherit;
+}
+
+#menuPanel input {
+  padding: 0.6rem 0.8rem;
+  color: var(--ink);
+  background: rgba(7, 16, 24, 0.75);
+}
+
+#menuPanel input::placeholder {
+  color: rgba(228, 242, 247, 0.45);
+}
+
+#menuPanel button {
+  border: 0;
+  background: linear-gradient(120deg, var(--accent), var(--accent-strong));
+  color: #221004;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 120ms ease, filter 120ms ease;
+}
+
+#menuPanel button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+}
+
+#menuPanel button:active {
+  transform: translateY(0);
+}
+
+.joinRow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+}
+
+.joinRow button {
+  width: auto;
+  padding-inline: 1rem;
+  white-space: nowrap;
+}
+
+#statusLine {
+  margin: 0.8rem 0 0;
+  font-size: 0.92rem;
+  color: var(--teal);
+  min-height: 1.2rem;
+}
+
+#statusLine.error {
+  color: var(--danger);
+}
+
+.tips {
+  margin-top: 0.8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  padding-top: 0.65rem;
+}
+
+.tips p {
+  margin: 0.32rem 0;
+  color: var(--ink-muted);
+  font-size: 0.85rem;
+}
+
+#hudPanel {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  z-index: 11;
+  width: min(16.5rem, calc(100vw - 2rem));
+  padding: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 1rem;
+  background: var(--panel);
+  backdrop-filter: blur(10px);
+}
+
+.metric {
+  margin-bottom: 0.55rem;
+}
+
+.metric:last-child {
+  margin-bottom: 0;
+}
+
+.metric .label {
+  display: block;
+  color: var(--ink-muted);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.healthTrack {
+  width: 100%;
+  height: 0.6rem;
+  margin: 0.2rem 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  overflow: hidden;
+}
+
+#healthFill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #6ef0e0, #ffb14d 65%, #ff5f5f);
+  transition: width 120ms linear;
+}
+
+.mini {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+#scorePanel {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 11;
+  width: min(16.5rem, calc(100vw - 2rem));
+  max-height: 37vh;
+  padding: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 1rem;
+  background: var(--panel-strong);
+  overflow: auto;
+}
+
+#scorePanel h2 {
+  margin: 0 0 0.45rem;
+  font-family: "Oxanium", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+#scoreList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#scoreList li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.4rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#scoreList li:last-child {
+  border-bottom: 0;
+}
+
+#scoreList .me {
+  color: var(--accent);
+}
+
+#victoryOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5, 8, 15, 0.56);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 280ms ease;
+}
+
+#victoryOverlay.visible {
+  opacity: 1;
+}
+
+.victoryCard {
+  width: min(27rem, calc(100vw - 2rem));
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  background: linear-gradient(130deg, rgba(16, 30, 41, 0.92), rgba(12, 23, 33, 0.92));
+  padding: 1.4rem;
+  text-align: center;
+  box-shadow: 0 0 2rem rgba(255, 177, 77, 0.2);
+}
+
+.victoryCard h3 {
+  margin: 0;
+  font-family: "Oxanium", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.victoryCard p {
+  margin: 0.55rem 0 0;
+  color: var(--ink-muted);
+  font-size: 0.97rem;
+}
+
+@media (max-width: 900px) {
+  #menuPanel,
+  #hudPanel,
+  #scorePanel {
+    width: min(20rem, calc(100vw - 1rem));
+  }
+
+  #menuPanel {
+    top: 0.5rem;
+    left: 0.5rem;
+  }
+
+  #hudPanel {
+    right: 0.5rem;
+    top: 0.5rem;
+  }
+
+  #scorePanel {
+    right: 0.5rem;
+    bottom: 0.5rem;
+    max-height: 28vh;
+  }
+}
+
+@media (max-width: 640px) {
+  #menuPanel {
+    max-width: calc(100vw - 1rem);
+    padding: 0.8rem;
+  }
+
+  #hudPanel {
+    top: auto;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    right: auto;
+    width: calc(100vw - 1rem);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.45rem 0.8rem;
+  }
+
+  .metric {
+    margin: 0;
+  }
+
+  #scorePanel {
+    display: none;
+  }
+}
